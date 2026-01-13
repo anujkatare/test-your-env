@@ -1,10 +1,10 @@
-# 🌱 env-safe
+# 🌱 test-your-env
 
-env-safe is a lightweight JavaScript utility that validates environment variables BEFORE your application starts, helping you avoid runtime crashes caused by missing or invalid configuration.
+test-your-env is a lightweight JavaScript utility that validates environment variables BEFORE your application starts, helping you avoid runtime crashes caused by missing or invalid configuration.
 
 ---
 
-WHY env-safe?
+WHY test-your-env?
 
 In real-world applications, environment variables are critical.
 Common problems include:
@@ -14,7 +14,7 @@ Common problems include:
 - Invalid environment values (for example NODE_ENV=prod)
 - Errors discovered after deployment
 
-env-safe catches these issues early and stops the app safely.
+test-your-env catches these issues early and stops the app safely.
 
 ---
 
@@ -32,10 +32,10 @@ FEATURES
 INSTALLATION
 
 Run:
-npm install env-safe
+npm install test-your-env
 
 Note:
-env-safe does NOT load environment variables.
+test-your-env does NOT load environment variables.
 Use dotenv or your deployment platform to load them.
 
 ---
@@ -45,7 +45,7 @@ BASIC USAGE
 Example code:
 
 import "dotenv/config"
-import { envSafe } from "env-safe"
+import { envSafe } from "test-your-env"
 
 envSafe({
   PORT: "number",
@@ -68,7 +68,7 @@ ERROR EXAMPLES
 PORT=3000
 
 Output:
-ENV-SAFE ERROR:
+test-your-env ERROR:
 - Missing env variable: JWT_SECRET
 - Missing env variable: NODE_ENV
 Fix env variables and restart the app.
@@ -81,7 +81,7 @@ Fix env variables and restart the app.
 PORT=abc
 
 Output:
-ENV-SAFE ERROR:
+test-your-env ERROR:
 - PORT should be a number (got "abc")
 
 ---
@@ -92,7 +92,7 @@ ENV-SAFE ERROR:
 NODE_ENV=prod
 
 Output:
-ENV-SAFE ERROR:
+test-your-env ERROR:
 - NODE_ENV must be one of: development, production (got "prod")
 
 ---
@@ -114,7 +114,7 @@ Perfect for:
 
 IMPORTANT NOTES
 
-- env-safe does NOT modify environment variables
+- test-your-env does NOT modify environment variables
 - It only validates existing variables
 - Designed to run once at app startup
 
