@@ -1,49 +1,57 @@
 # 🌱 test-your-env
 
-test-your-env is a lightweight JavaScript utility that validates environment variables BEFORE your application starts, helping you avoid runtime crashes caused by missing or invalid configuration.
+**test-your-env** is a lightweight JavaScript utility that validates environment variables **before your application starts**, helping you avoid runtime crashes caused by missing or invalid configuration.
 
 ---
 
-WHY test-your-env?
+## 🚀 Why test-your-env?
 
 In real-world applications, environment variables are critical.
 Common problems include:
 
-- Missing environment variables
-- Wrong data types (for example PORT=abc)
-- Invalid environment values (for example NODE_ENV=prod)
-- Errors discovered after deployment
+* Missing environment variables
+* Wrong data types (for example `PORT=abc`)
+* Invalid environment values (for example `NODE_ENV=prod`)
+* Errors discovered only after deployment
 
-test-your-env catches these issues early and stops the app safely.
-
----
-
-FEATURES
-
-- Checks for missing environment variables
-- Validates variable types (string, number, boolean)
-- Supports allowed values (enums)
-- Clear, human-readable error messages
-- Zero dependencies
-- DevOps and production friendly
+**test-your-env** catches these issues early and stops the app safely before it starts.
 
 ---
 
-INSTALLATION
+## ✨ Features
 
-Run:
+* Validate required environment variables
+* Type validation (`string`, `number`, `boolean`)
+* Support for allowed values (enums)
+* Clear and human-readable error messages
+* Lightweight and easy to use
+* Works well in **DevOps and production environments**
+
+---
+
+## 📦 Installation
+
+Install the package using npm:
+
+```bash
 npm install test-your-env
+```
 
-Note:
-test-your-env does NOT load environment variables.
-Use dotenv or your deployment platform to load them.
+> **Note:**
+> `test-your-env` does **not load environment variables**.
+> Use `dotenv` or your deployment platform to load them.
+
+Example:
+
+```javascript
+import "dotenv/config"
+```
 
 ---
 
-BASIC USAGE
+## 🧪 Basic Usage
 
-Example code:
-
+```javascript
 import "dotenv/config"
 import { envSafe } from "test-your-env"
 
@@ -52,81 +60,106 @@ envSafe({
   JWT_SECRET: "string",
   NODE_ENV: ["development", "production"]
 })
+```
 
-If all variables are valid, output will be:
+If all variables are valid, the output will be:
+
+```
 ✔ Environment variables validated
+```
 
-Your app continues normally.
+Your application will then start normally.
 
 ---
 
-ERROR EXAMPLES
+## ❌ Error Examples
 
-1) Missing variable
+### 1. Missing Environment Variable
 
-.env file:
+`.env`
+
+```
 PORT=3000
+```
 
 Output:
-test-your-env ERROR:
-- Missing env variable: JWT_SECRET
-- Missing env variable: NODE_ENV
+
+```
+❌ test-your-env ERROR:
+
+• Missing environment variable: JWT_SECRET
+• Missing environment variable: NODE_ENV
+
 Fix env variables and restart the app.
+```
 
 ---
 
-2) Invalid type
+### 2. Invalid Type
 
-.env file:
+`.env`
+
+```
 PORT=abc
+```
 
 Output:
-test-your-env ERROR:
-- PORT should be a number (got "abc")
+
+```
+❌ test-your-env ERROR:
+
+• PORT must be a number (got 'abc')
+```
 
 ---
 
-3) Invalid allowed value
+### 3. Invalid Allowed Value
 
-.env file:
+`.env`
+
+```
 NODE_ENV=prod
+```
 
 Output:
-test-your-env ERROR:
-- NODE_ENV must be one of: development, production (got "prod")
+
+```
+❌ test-your-env ERROR:
+
+• NODE_ENV must be one of: development, production (got 'prod')
+```
 
 ---
 
-HOW IT HELPS IN PRODUCTION
+## ⚙️ How It Helps in Production
 
-- Prevents apps from starting with broken configuration
-- Catches CI/CD and deployment mistakes early
-- Makes debugging easier for teams
-- Reduces runtime crashes
+* Prevents applications from starting with broken configuration
+* Detects CI/CD and deployment mistakes early
+* Improves debugging for teams
+* Reduces runtime crashes
 
 Perfect for:
-- Node.js apps
-- Next.js backends
-- Docker containers
-- CI/CD pipelines
+
+* Node.js applications
+* Next.js backends
+* Docker containers
+* CI/CD pipelines
 
 ---
 
-IMPORTANT NOTES
+## 📌 Important Notes
 
-- test-your-env does NOT modify environment variables
-- It only validates existing variables
-- Designed to run once at app startup
-
----
-
-LICENSE
-
-MIT License © anujkatare
+* `test-your-env` **does not modify environment variables**
+* It only **validates existing variables**
+* Designed to run **once during application startup**
 
 ---
 
-TIP
+## 📄 License
 
-If this package helped you, consider starring the repository.
-Feedback and contributions are welcome.
+MIT License © Anuj Katare
+
+---
+
+⭐ If this package helped you, consider **starring the repository**.
+Contributions and feedback are always welcome.
